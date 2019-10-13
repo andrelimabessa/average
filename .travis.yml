@@ -1,0 +1,8 @@
+language: python
+python:
+  - "3.6"      # current default Python on Travis CI
+install:
+  - pip install pytest pytest-cov
+script:
+  - pytest --cov=./ --cov-report xml
+  - sonar-scanner
