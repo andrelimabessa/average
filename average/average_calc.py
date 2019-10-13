@@ -7,7 +7,7 @@ class AverageCalc:
         self.__window_size = window_size
         self.__timestamp_duration_list =[]
         self.__delta_increment = timedelta(minutes=1)
-        self.__delta_window = timedelta(minutes=10)
+        self.__delta_window = timedelta(minutes=int(window_size))
         self.__overlap_list = []
     
     def add_tranlation_delivered(self, tranlation_delivered):   
@@ -18,7 +18,6 @@ class AverageCalc:
     def cal_avg_delivered_time(self):
         if len(self.__timestamp_duration_list) > 0:
 
-            self.__overlap_list = []
             reference = self.__get_time_until_minutes(self.__timestamp_duration_list[0][0]) - self.__delta_increment
             
             while len(self.__timestamp_duration_list) > 0:
@@ -56,9 +55,12 @@ class AverageCalc:
             size = len(self.__overlap_list)
             amount = 0
             for item in self.__overlap_list:
-                amount += item[2]
+                if item[0] < item[1]:
+                    amount += item[2]
             avg = amount/size
-
+            if int(avg) == avg:
+                avg = int(avg)
+                
         return avg
    
     def __get_time_until_minutes(self, timestamp):
