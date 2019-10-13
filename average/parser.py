@@ -1,7 +1,7 @@
-from .translation_delivered import Translation_Delivered
+from .translation_delivered import TranslationDelivered
 
 def translation_delivered_generate(file_path):
     with open(file_path) as file:
         for line in file:
-            x = Translation_Delivered(line)
+            x = TranslationDelivered(line)
             yield x

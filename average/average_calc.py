@@ -1,7 +1,7 @@
 from datetime import datetime
 from datetime import timedelta
 
-class Average_Calc:
+class AverageCalc:
 
     def __init__(self, window_size):
         self.window_size = window_size

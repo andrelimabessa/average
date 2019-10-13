@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 from pytz import timezone
 
-class Translation_Delivered:
+class TranslationDelivered:
 
     def __init__(self, json_input):
         json_obj = json.loads(json_input)
