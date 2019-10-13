@@ -1,5 +1,5 @@
-from . import translation_delivered_generate
+from . import average
 
 def test_sample():
-    for obj in translation_delivered_generate("teste.txt"):
+    for obj in average.translation_delivered_generate("teste.txt"):
         print(obj.timestamp.minute)
