@@ -1,4 +1,5 @@
 import sys
+import json
 
 from . import translation_delivered_parser, TranslationDelivered, AverageCalc
 
@@ -24,6 +25,8 @@ def main():
         average_calc = AverageCalc(args["window_size"])
         for item in translation_delivered_parser(args["input_file"]):
             average_calc.add_tranlation_delivered(item)
-        average_calc.cal_avg_delivered_time()
-    
+        
+        for item in average_calc.cal_avg_delivered_time():
+            print(json.dumps({"date": str(item[0]), "average_delivery_time": item[1]}))
+
 main()
