@@ -1,6 +1,6 @@
 import sys
 
-from . import translation_delivered_generate, Translation_Delivered, Average_Calc
+from . import translation_delivered_parser, TranslationDelivered, AverageCalc
 
 def help():
     print("--window_size : Define the average window size. Mandatory argument")
@@ -21,8 +21,8 @@ def main():
     args = process_args(sys.argv)
     
     if len(args) > 0:
-        average_calc = Average_Calc(args["window_size"])
-        for item in translation_delivered_generate(args["input_file"]):
+        average_calc = AverageCalc(args["window_size"])
+        for item in translation_delivered_parser(args["input_file"]):
             average_calc.add_tranlation_delivered(item)
         average_calc.cal_avg_delivered_time()
     

@@ -1,3 +1,2 @@
-from .translation_delivered import TranslationDelivered
-from .parser import translation_delivered_generate
+from .parser import translation_delivered_parser, TranslationDelivered
 from .average_calc import AverageCalc

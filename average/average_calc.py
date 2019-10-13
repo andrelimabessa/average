@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 from datetime import timedelta
 
@@ -16,22 +17,20 @@ class AverageCalc:
         self.__timestamp_duration.append((button, top, tranlation_delivered.duration))
             
     def cal_avg_delivered_time(self):
-
-        if len(self.timestamp_duration) > 0:
+        if len(self.__timestamp_duration) > 0:
 
             self.__overlap_list = []
             reference = self.__get_time_until_minutes(self.__timestamp_duration[0][0]) - self.__delta_increment
             
-            while len(self.timestamp_duration) > 0:
+            while len(self.__timestamp_duration) > 0:
             
                 self.__update_overlap_list(reference)
                 self.__print_overlap_list(reference)                
                 self.__update_timestamp_duration()
 
-                reference += self.delta_increment
+                reference += self.__delta_increment
 
     def __update_overlap_list(self, reference):
-        
         self.__remove_element_out_of_range(reference)
 
         for item in self.__timestamp_duration:
@@ -48,12 +47,12 @@ class AverageCalc:
 
     def __update_timestamp_duration(self):
         for item in self.__overlap_list:
-            if item in self.timestamp_duration:
+            if item in self.__timestamp_duration:
                 self.__timestamp_duration.remove(item)
 
     def __print_overlap_list(self, reference):
         avg = 0
-        if len(self.overlap_list) > 0:
+        if len(self.__overlap_list) > 0:
             size = len(self.__overlap_list)
             amount = 0
             for item in self.__overlap_list:
@@ -63,10 +62,9 @@ class AverageCalc:
         self.__print(reference, avg)
    
     def __print(self, time, avg):
-        print("{0}, {1}".format(time, avg))
+        print(json.dumps({"date": str(time), "average_delivery_time": avg}))
 
     def __get_time_until_minutes(self, timestamp):
-        
         return  datetime(year=timestamp.year,
                     month=timestamp.month,
                     day=timestamp.day,
