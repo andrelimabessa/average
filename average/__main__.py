@@ -27,6 +27,6 @@ def main():
             average_calc.add_tranlation_delivered(item)
         
         for item in average_calc.cal_avg_delivered_time():
-            print(json.dumps({"date": str(item[0]), "average_delivery_time": item[1]}))
+            print(json.dumps({"date": item[0], "average_delivery_time": item[1]}))
 
 main()

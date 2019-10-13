@@ -25,7 +25,7 @@ class AverageCalc:
                 self.__update_overlap_list(reference)
                 self.__update_timestamp_duration_list()
 
-                yield (reference, self.__calc_overlap_avg())                
+                yield (str(reference), self.__calc_overlap_avg())                
                 
                 reference += self.__delta_increment
 
