@@ -28,16 +28,14 @@ def test_case_window_size_0():
     average_calc = average.AverageCalc(0)
     compare_average_result(average_calc, "events02.json", "result02.txt")
 
-def test_case_window_size_negative():
+def test_case_window_size_one():
     average_calc = average.AverageCalc(1)
     compare_average_result(average_calc, "events02.json", "result03.txt")
 
-def test_case_file_one_input():
+def test_case_file_one_register():
     average_calc = average.AverageCalc(10)
     compare_average_result(average_calc, "events01.json", "result01.txt")    
 
-def test_case_file_three_inputs():
+def test_case_file_three_registers():
     average_calc = average.AverageCalc(10)
     compare_average_result(average_calc, "events02.json", "result04.txt")    
-
-    

@@ -9,7 +9,7 @@ addons:
       secure: "0a3c6f7a1cef835805dc7051fa2007883a0ce5d8"
 
 install:
-  - pip install pytest pytest-cov pytz
+  - pip install -r requirements.txt
 script:
   - pytest --cov=./ --cov-report xml
   - sonar-scanner
